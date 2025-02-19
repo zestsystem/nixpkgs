@@ -40,7 +40,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     cp -r . $out/lib/node_modules/eas-cli-root
   '';
 
-  postInstall = ''
+  postFixup = ''
     mkdir -p $out/bin
     ln -sf $out/lib/node_modules/eas-cli-root/packages/eas-cli/bin/run $out/bin/eas
   '';
