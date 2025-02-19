@@ -36,6 +36,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   # yarnInstallHook strips out build outputs within packages/eas-cli resulting in most commands missing from eas-cli.
   installPhase = ''
     runHook preInstall
+
+    mkdir -p $out/lib/node_modules/eas-cli-root
+    cp -r . $out/lib/node_modules/eas-cli-root
   '';
 
   postFixup = ''
