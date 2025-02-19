@@ -35,9 +35,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   # yarnInstallHook strips out build outputs within packages/eas-cli resulting in most commands missing from eas-cli.
   installPhase = ''
-    mkdir -p $out/lib/node_modules/eas-cli-root
-    yarn install --immutable --immutable-cache --offline --non-interactive --production --frozen-lockfile
-    cp -r . $out/lib/node_modules/eas-cli-root
+    runHook preInstall
   '';
 
   postFixup = ''
